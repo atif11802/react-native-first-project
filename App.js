@@ -11,21 +11,40 @@ import UserData from "./src/screens/UserData";
 const Stack = createNativeStackNavigator();
 export default function App() {
 	return (
-		<View>
+		<View style={styles.mainContainer}>
 			<NavigationContainer>
-				<Stack.Navigator initialRouteName='Home'>
+				<Stack.Navigator
+					initialRouteName='Home'
+					options={{
+						headerShown: false,
+					}}
+				>
 					<Stack.Screen name='Home'>
 						{(props) => <Home {...props} userName={"atif aslam"} />}
 					</Stack.Screen>
-					<Stack.Screen name='Contact' component={Contact} />
+					<Stack.Screen
+						options={{
+							headerTitle: "Contact",
+							headerTitleAlign: "center",
+							headerTitleStyle: {
+								fontSize: 20,
+							},
+						}}
+						name='Contact'
+						component={Contact}
+					/>
 					<Stack.Screen name='Course' component={Course} />
 					<Stack.Screen name='About' component={About} />
 					<Stack.Screen name='Student' component={UserData} />
 				</Stack.Navigator>
 			</NavigationContainer>
-			<StatusBar style='auto' />
+			{/* <StatusBar style='auto' /> */}
 		</View>
 	);
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+	mainContainer: {
+		marginTop: StatusBar.currentHeight,
+	},
+});
