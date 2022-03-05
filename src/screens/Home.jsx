@@ -1,15 +1,19 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { Image } from "react-native-web";
+import Menu from "../Components/Menu";
 
-const Home = ({userName}) => {
+const Home = ({ userName }) => {
 	return (
 		<View style={styles.mainContainer}>
 			<View style={styles.homeTop}>
 				<Image
 					style={styles.headerImage}
-					source={require("../../assets/pexels-emily-ranquist-1205651.jpg")}
+					// source={require("../../assets/pexels-emily-ranquist-1205651.jpg")}
 					resizeMode='content'
+					source={{
+						uri: "https://images.unsplash.com/photo-1606660956148-5291deb68185?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80",
+					}}
 				/>
 				<Text style={styles.mainHeader}>hello To</Text>
 				<Text
@@ -27,6 +31,9 @@ const Home = ({userName}) => {
 				<Text style={styles.paraStyle}>
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 				</Text>
+			</View>
+			<View>
+				<Menu />
 			</View>
 		</View>
 	);
