@@ -5,15 +5,29 @@ import { Button } from "react-native-web";
 const Contact = ({ navigation }) => {
 	return (
 		<View>
-			<Text>Contact</Text>
-			<Button
-				title='Go to Details'
-				onPress={() => navigation.navigate("Home")}
-			/>
+			<View style={styles.backButton}>
+				<Text style={styles.backText}>Contact</Text>
+				<Button
+					style={styles.backButtonbtn}
+					title='Go to Home'
+					onPress={() => navigation.navigate("Home")}
+				/>
+			</View>
 		</View>
 	);
 };
 
 export default Contact;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+	backButton: {
+		display: "flex",
+		flexDirection: "row",
+	},
+	backText: {
+		flex: 0.5,
+	},
+	backButtonbtn: {
+		flex: 0.5,
+	},
+});

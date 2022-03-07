@@ -7,6 +7,7 @@ import Contact from "./src/screens/Contact";
 import Course from "./src/screens/Course";
 import About from "./src/screens/About";
 import UserData from "./src/screens/UserData";
+import CourseDetails from "./src/screens/CourseDetails";
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -36,6 +37,7 @@ export default function App() {
 					<Stack.Screen name='Course' component={Course} />
 					<Stack.Screen name='About' component={About} />
 					<Stack.Screen name='Student' component={UserData} />
+					<Stack.Screen name='CourseDetails' component={CourseDetails} />
 				</Stack.Navigator>
 			</NavigationContainer>
 			{/* <StatusBar style='auto' /> */}
