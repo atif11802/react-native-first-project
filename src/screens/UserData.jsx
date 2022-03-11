@@ -1,30 +1,12 @@
 import { FlatList, Image, StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import { Button } from "react-native-web";
+import usePosts from "../api/useUsers";
 
 const UserData = ({ navigation }) => {
-	const [user, setUser] = useState([]);
+	const { data, isLoading, isSuccess } = usePosts();
 
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const data = await fetch(
-					"https://thapatechnical.github.io/userapi/users.json"
-				);
-
-				const realData = data.json();
-				realData.then((data) => {
-					setUser(data);
-				});
-			} catch (error) {
-				console.log(error);
-			}
-		};
-
-		// call the function
-		fetchData();
-		// make sure to catch any error
-	}, []);
+	console.log(data, isLoading, isSuccess);
 
 	// render the students cards
 	const showUserData = ({ item }) => {
@@ -52,6 +34,10 @@ const UserData = ({ navigation }) => {
 		);
 	};
 
+	if (isLoading) {
+		return <Text>Loading...</Text>;
+	}
+
 	return (
 		<View>
 			<View style={styles.backButton}>
@@ -67,7 +53,7 @@ const UserData = ({ navigation }) => {
 			</View>
 			<FlatList
 				keyExtractor={(item) => item.id}
-				data={user}
+				data={data}
 				renderItem={showUserData}
 				horizontal
 				showsHorizontalScrollIndicator={false}

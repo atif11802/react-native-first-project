@@ -8,40 +8,45 @@ import Course from "./src/screens/Course";
 import About from "./src/screens/About";
 import UserData from "./src/screens/UserData";
 import CourseDetails from "./src/screens/CourseDetails";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 const Stack = createNativeStackNavigator();
+const queryClient = new QueryClient();
+
 export default function App() {
 	return (
-		<View style={styles.mainContainer}>
-			<NavigationContainer>
-				<Stack.Navigator
-					initialRouteName='Home'
-					options={{
-						headerShown: false,
-					}}
-				>
-					<Stack.Screen name='Home'>
-						{(props) => <Home {...props} userName={"atif aslam"} />}
-					</Stack.Screen>
-					<Stack.Screen
+		<QueryClientProvider client={queryClient}>
+			<View style={styles.mainContainer}>
+				<NavigationContainer>
+					<Stack.Navigator
+						initialRouteName='Home'
 						options={{
-							headerTitle: "Contact",
-							headerTitleAlign: "center",
-							headerTitleStyle: {
-								fontSize: 20,
-							},
+							headerShown: false,
 						}}
-						name='Contact'
-						component={Contact}
-					/>
-					<Stack.Screen name='Course' component={Course} />
-					<Stack.Screen name='About' component={About} />
-					<Stack.Screen name='Student' component={UserData} />
-					<Stack.Screen name='CourseDetails' component={CourseDetails} />
-				</Stack.Navigator>
-			</NavigationContainer>
-			{/* <StatusBar style='auto' /> */}
-		</View>
+					>
+						<Stack.Screen name='Home'>
+							{(props) => <Home {...props} userName={"atif aslam"} />}
+						</Stack.Screen>
+						<Stack.Screen
+							options={{
+								headerTitle: "Contact",
+								headerTitleAlign: "center",
+								headerTitleStyle: {
+									fontSize: 20,
+								},
+							}}
+							name='Contact'
+							component={Contact}
+						/>
+						<Stack.Screen name='Course' component={Course} />
+						<Stack.Screen name='About' component={About} />
+						<Stack.Screen name='Student' component={UserData} />
+						<Stack.Screen name='CourseDetails' component={CourseDetails} />
+					</Stack.Navigator>
+				</NavigationContainer>
+				{/* <StatusBar style='auto' /> */}
+			</View>
+		</QueryClientProvider>
 	);
 }
 
